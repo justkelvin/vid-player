@@ -15,10 +15,12 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--single', help='Provide a single video file with full path. ( Optional )')
 parser.add_argument('-f', '--file', help='Provide a Filename with your videos path. ( Optional )')
+parser.add_argument('-g', '--generate', help='Generate a playlist and save it to a file.')
 
 args = parser.parse_args()
 video = args.single
 vf = args.file
+gen_pl = args.generate
 
 def python_chk():
     if sys.version_info < (3, 5):
@@ -40,9 +42,6 @@ def program_chk():
             sys.exit(1)
         else:
             pass
-
-def user_file(vf):
-    video_file(file_name = vf)
 
 def video_file(file_name = 'files.txt'):
     """This gets the video file names in a file.txt and return an array of them"""
@@ -67,7 +66,7 @@ def main():
     if args.single:
         player(video, isList = False)
     elif args.file:
-        user_file(vf)
+        player(video_file(file_name = vf))
     else:
         player(video_file())
 
