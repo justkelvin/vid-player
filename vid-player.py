@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Title: Vid Player
-# Description: Having a list of fav songs, add them to a file and let this play all of them for you.
+# Description: Having a list of fav songs, add them to a file or supply it as arg with -f and let this play all of them for you.
 # Author: Kelvin <email@gmail.com>
 # Date: 2021-12-07
 # Version: 1.0.0
