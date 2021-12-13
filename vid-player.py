@@ -32,11 +32,11 @@ def program_chk():
         installed = which(i)
         if installed == None:
             print(f"Install {i} to use this script!")
-            x = input("Do you want to install now?[y,n]: ")
-            if x == 'y':
-                os.system(f"sudo apt install {i}")
-            else:
-                pass
+            # x = input("Do you want to install now?[y,n]: ")
+            # if x == 'y':
+            #     os.system(f"sudo apt install {i}")
+            # else:
+            #     pass
             sys.exit(1)
         else:
             pass
