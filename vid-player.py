@@ -58,8 +58,7 @@ def player(video, isList = True):
         for i in video:
             os.system('mpv ' + i + ' 1>/dev/null')
     else:
-        os.system('mpv ' + video + ' 1>/dev/null')
-        pass
+        os.system('mpv "' + video + '" 1>/dev/null')
 
 def main():
     python_chk()
