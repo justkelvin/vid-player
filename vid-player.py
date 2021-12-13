@@ -16,6 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--single', help='Provide a single video file with full path. ( Optional )')
 parser.add_argument('-f', '--file', help='Provide a Filename with your videos path. ( Optional )')
 parser.add_argument('-g', '--generate', help='Generate a playlist and save it to a file.')
+parser.add_argument('-v', '--version', help='Print the script version.')
 
 args = parser.parse_args()
 video = args.single
