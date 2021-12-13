@@ -11,6 +11,11 @@ import os
 import sys
 from shutil import which
 
+def python_chk():
+    if sys.version_info < (3, 5):
+        sys.stderr.write("Your need a higher python version to use the script")
+        sys.exit(1)
+
 def program_chk():
     """Ensures that mpv is installed before doing anything else. Also asks if you want to install"""
     program = ['mpv']
@@ -41,6 +46,7 @@ def player(video):
         os.system('mpv ' + i + ' 1>/dev/null')
 
 def main():
+    python_chk()
     program_chk()
     player(video_file())
 
