@@ -10,6 +10,15 @@
 import os
 import sys
 from shutil import which
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-s', '--single', help='Provide a single video file with full path. ( Optional )')
+parser.add_argument('-f', '--file', help='Provide a Filename with your videos path. ( Optional )')
+
+args = parser.parse_args()
+video = args.single
+vf = args.file
 
 def python_chk():
     if sys.version_info < (3, 5):
@@ -28,27 +37,40 @@ def program_chk():
                 os.system(f"sudo apt install {i}")
             else:
                 pass
-            sys.exit()
+            sys.exit(1)
         else:
             pass
 
-def video_file():
+def user_file(vf):
+    video_file(file_name = vf)
+
+def video_file(file_name = 'files.txt'):
     """This gets the video file names in a file.txt and return an array of them"""
-    with open('files.txt', 'r') as videos:
+    with open(file_name, 'r') as videos:
         video = []
         for v in videos.readlines():
             video.append(v.strip())
     return video
                 
-def player(video):
+def player(video, isList = True):
     """This is where the program mpv is used to play each video individually"""
-    for i in video:
-        os.system('mpv ' + i + ' 1>/dev/null')
+    if isList:
+        for i in video:
+            os.system('mpv ' + i + ' 1>/dev/null')
+    else:
+        os.system('mpv ' + video + ' 1>/dev/null')
+        pass
 
 def main():
     python_chk()
     program_chk()
-    player(video_file())
+    
+    if args.single:
+        player(video, isList = False)
+    elif args.file:
+        user_file(vf)
+    else:
+        player(video_file())
 
 if __name__ == '__main__':
     main()
