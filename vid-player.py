@@ -24,52 +24,52 @@ vf = args.file
 gen_pl = args.generate
 
 def python_chk():
-    if sys.version_info < (3, 5):
-        sys.stderr.write("Your need a higher python version to use the script")
-        sys.exit(1)
+	if sys.version_info < (3, 5):
+		sys.stderr.write("Your need a higher python version to use the script")
+		sys.exit(1)
 
 def program_chk():
-    """Ensures that mpv is installed before doing anything else. Also asks if you want to install"""
-    program = ['mpv']
-    for i in program:
-        installed = which(i)
-        if installed == None:
-            print(f"Install {i} to use this script!")
-            # x = input("Do you want to install now?[y,n]: ")
-            # if x == 'y':
-            #     os.system(f"sudo apt install {i}")
-            # else:
-            #     pass
-            sys.exit(1)
-        else:
-            pass
+	"""Ensures that mpv is installed before doing anything else. Also asks if you want to install"""
+	program = ['mpv']
+	for i in program:
+		installed = which(i)
+		if installed == None:
+			print(f"Install {i} to use this script!")
+			# x = input("Do you want to install now?[y,n]: ")
+			# if x == 'y':
+			#     os.system(f"sudo apt install {i}")
+			# else:
+			#     pass
+			sys.exit(1)
+		else:
+			pass
 
 def video_file(file_name = 'files.txt'):
-    """This gets the video file names in a file.txt and return an array of them"""
-    with open(file_name, 'r') as videos:
-        video = []
-        for v in videos.readlines():
-            video.append(v.strip())
-    return video
-                
+	"""This gets the video file names in a file.txt and return an array of them"""
+	with open(file_name, 'r') as videos:
+		video = []
+		for v in videos.readlines():
+			video.append(v.strip())
+	return video
+				
 def player(video, isList = True):
-    """This is where the program mpv is used to play each video individually"""
-    if isList:
-        for i in video:
-            os.system('mpv ' + i + ' 1>/dev/null')
-    else:
-        os.system('mpv "' + video + '" 1>/dev/null')
+	"""This is where the program mpv is used to play each video individually"""
+	if isList:
+		for i in video:
+			os.system('mpv ' + i + ' 1>/dev/null')
+	else:
+		os.system('mpv "' + video + '" 1>/dev/null')
 
 def main():
-    python_chk()
-    program_chk()
-    
-    if args.single:
-        player(video, isList = False)
-    elif args.file:
-        player(video_file(file_name = vf))
-    else:
-        player(video_file())
+	python_chk()
+	program_chk()
+	
+	if args.single:
+		player(video, isList = False)
+	elif args.file:
+		player(video_file(file_name = vf))
+	else:
+		player(video_file())
 
 if __name__ == '__main__':
-    main()
+	main()
