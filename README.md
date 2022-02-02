@@ -23,8 +23,8 @@ cd vid-player
 
 The script can be run  with the following options.
 ```bash
-#Running the script reads a file in its directory with full song video path.
-#Adding quotes around the file path is essential
+# Running the script reads a file in its directory with full song video path.
+# Adding quotes around the file path is essential
 ./vid-player.py
 
 ```
